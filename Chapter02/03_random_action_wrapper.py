@@ -7,8 +7,11 @@ Action = TypeVar('Action')
 
 class RandomActionWrapper(gym.ActionWrapper):
     def __init__(self, env, epsilon=0.1):
-        super(RandomActionWrapper, self).__init__(env)
-        self.epsilon = epsilon
+        # 对这个地方不理解是因为没有理解parent class的概念
+        # 这里的super()是调用父类的构造函数，env就是传入的环境
+        # 这里的self.env就是父类的env属性，表示当前环境
+        super(RandomActionWrapper, self).__init__(env) # 调用父类的构造函数
+        self.epsilon = epsilon # 随机动作的概率
 
     def action(self, action: Action) -> Action:
         if random.random() < self.epsilon:
