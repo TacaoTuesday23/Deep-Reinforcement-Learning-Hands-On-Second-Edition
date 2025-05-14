@@ -9,12 +9,11 @@ import torch.nn as nn
 import torch.optim as optim
 
 
-HIDDEN_SIZE = 128
-BATCH_SIZE = 16
-PERCENTILE = 70
+HIDDEN_SIZE = 128 #128 neurons in the hidden layer
+BATCH_SIZE = 16 #16 samples per batch, 1 episode per sample
+PERCENTILE = 70 #70% of the best rewards to keep
 
-
-class Net(nn.Module):
+class Net(nn.Module): #nn.Module is the base class for all neural network modules in PyTorch
     def __init__(self, obs_size, hidden_size, n_actions):
         super(Net, self).__init__()
         self.net = nn.Sequential(
@@ -26,7 +25,8 @@ class Net(nn.Module):
     def forward(self, x):
         return self.net(x)
 
-
+#Episode and Episodestep are classes that are used to store the reward and steps of an episode
+#The data type they store is a tuple
 Episode = namedtuple('Episode', field_names=['reward', 'steps'])
 EpisodeStep = namedtuple('EpisodeStep', field_names=['observation', 'action'])
 
