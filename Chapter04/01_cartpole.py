@@ -26,7 +26,7 @@ class Net(nn.Module): #nn.Module is the base class for all neural network module
         return self.net(x)
 
 #Episode and Episodestep are classes that are used to store the reward and steps of an episode
-#The data type they store is a tuple
+#The data type they store is 
 Episode = namedtuple('Episode', field_names=['reward', 'steps'])
 EpisodeStep = namedtuple('EpisodeStep', field_names=['observation', 'action'])
 
